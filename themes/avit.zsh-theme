@@ -2,14 +2,14 @@
 
 PROMPT='
 $(_user_host)${_current_dir} $(git_prompt_info) $(_ruby_version)
-▶ '
+%{$fg_bold[white]%}»%{$reset_color%} '
 
-PROMPT2='%{$fg[grey]%}◀%{$reset_color%} '
+PROMPT2='%{$fg_bold[white]%}«%{$reset_color%} '
 
 RPROMPT='$(_vi_status)%{$(echotc UP 1)%}$(_git_time_since_commit) $(git_prompt_status) ${_return_status}%{$(echotc DO 1)%}'
 
-local _current_dir="%{$fg[blue]%}%3~%{$reset_color%} "
-local _return_status="%{$fg[red]%}%(?..⍉)%{$reset_color%}"
+local _current_dir="%{$fg[yellow]%}%3~%{$reset_color%} "
+local _return_status="%(?..%{$fg_bold[white]%}[%{$fg[red]%}%?%{$fg_bold[white]%}])%{$reset_color%}"
 local _hist_no="%{$fg[grey]%}%h%{$reset_color%}"
 
 function _user_host() {
@@ -19,7 +19,7 @@ function _user_host() {
     me="%n"
   fi
   if [[ -n $me ]]; then
-    echo "%{$fg[cyan]%}$me%{$reset_color%}:"
+    echo "%{$fg[green]%}$me%{$fg_bold[white]%}:%{$reset_color%}"
   fi
 }
 
@@ -85,7 +85,7 @@ ZSH_THEME_GIT_PROMPT_MODIFIED="%{$fg[yellow]%}⚑ "
 ZSH_THEME_GIT_PROMPT_DELETED="%{$fg[red]%}✖ "
 ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg[blue]%}▴ "
 ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[cyan]%}§ "
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[grey]%}◒ "
+ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[grey]%}◊ "
 
 # Colors vary depending on time lapsed.
 ZSH_THEME_GIT_TIME_SINCE_COMMIT_SHORT="%{$fg[green]%}"
